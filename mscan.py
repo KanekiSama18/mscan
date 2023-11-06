@@ -8,7 +8,7 @@ import datetime
 import time as t
 
 
-print("*"*25)
+print("*"*50)
 print(Fore.RED + "  _______  _______  _______  _______  _ ")      
 print(" (       )(  ____ \(  ____ \(  ___  )( (    /|") 
 print(" | () () || (    \/| (    \/| (   ) ||  \  ( |") 
