@@ -4,7 +4,9 @@ from colorama import Fore
 import socket
 import sys
 import threading
+import datetime
 import time as t
+
 
 print("*"*25)
 print(Fore.RED + "  _______  _______  _______  _______  _ ")      
@@ -21,6 +23,10 @@ print(Fore.WHITE + "*"*50)
 uhelp = "python3 mscan.py HOST START_PORT END_PORT"
 
 openports = []
+
+now = datetime.datetime.now()
+print(Fore.MAGENTA + "Started the Scan at :", now.strftime("%y-%m-%d %H:%M:%S"))
+print(Fore.WHITE + "*"*50)
 
 st = t.time()
 
@@ -51,8 +57,9 @@ def port_scan(port):
     
 
 for port in range(sport, eport+1):
-    thread = threading.Thread(target = port_scan, args = (port,))
+    thread = threading.Thread(target = port_scan,daemon = True, args = (port,))
     thread.start()
+ 
     
 if (len(openports) == 0):
         print(Fore.RED + "No open ports found!!")
