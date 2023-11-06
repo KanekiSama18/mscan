@@ -6,7 +6,7 @@ import sys
 import threading
 import time as t
 
-print("*"*50)
+print("*"*25)
 print(Fore.RED + "  _______  _______  _______  _______  _ ")      
 print(" (       )(  ____ \(  ____ \(  ___  )( (    /|") 
 print(" | () () || (    \/| (    \/| (   ) ||  \  ( |") 
@@ -38,7 +38,7 @@ sport = int(sys.argv[2])
 eport = int(sys.argv[3])
 
 print(Fore.GREEN + "Starting the Scan: ")
-print(Fore.WHITE + "*"*50)
+
 
 def port_scan(port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -48,14 +48,14 @@ def port_scan(port):
         print(Fore.BLUE + "Port {} is open.".format(port))
         openports.append(port)
     s.close()
-    if (len(openports) == 0):
-        print(Fore.RED + "No open ports found!!")
     
 
 for port in range(sport, eport+1):
     thread = threading.Thread(target = port_scan, args = (port,))
     thread.start()
     
+if (len(openports) == 0):
+        print(Fore.RED + "No open ports found!!")
 
 et = t.time()
 print(Fore.YELLOW + "Time elapsed:", et-st ,"s")
